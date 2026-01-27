@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Prachi Jha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent: #ff78e3;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url("images/skills.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 80px;
+            max-width: 1300px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        /* Profile Side Styling */
+        .profile-side {
+            flex: 0 0 350px;
+            position: sticky;
+            top: 80px;
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 1s ease;
+        }
+
+        .profile-side img {
+            width: 100%;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+
+        /* Content Side Styling */
+        .content-side {
+            flex: 1;
+            text-align: left;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 1s ease;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -3px;
+            font-weight: 700;
+        }
+
+        .bio-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        /* Education Layout */
+        .edu-section h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .edu-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .edu-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+            background: rgba(255, 120, 227, 0.05);
+        }
+
+        .edu-card h4 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .edu-card p {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 12px;
+            font-weight: 300;
+        }
+
+        .edu-card .meta {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        /* Entrance Animations */
+        .reveal {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+
+        @media (max-width: 1000px) {
+            .main-container { flex-direction: column; align-items: center; }
+            .content-side { text-align: center; }
+            .profile-side { position: relative; top: 0; flex: 0 0 280px; margin-bottom: 40px; }
+            h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="profile-side" id="p-side">
+            <img src="images/meme.png" alt="Prachi Jha | IGDTUW Student">
+        </div>
+
+        <div class="content-side" id="c-side">
+            <h1>Prachi Jha</h1>
+            
+            <p class="bio-text">
+                I am a pre-final year B.Tech student in Electronics and Communication Engineering with a strong passion for software development, machine learning, and problem-solving. I enjoy transforming ideas into working solutions by combining logical thinking with hands-on implementation.
+                <br><br>
+                I have hands-on experience working with C++, and web technologies, and I am actively improving my skills in data structures & algorithms, machine learning models, and full-stack development.
+                I am a curious learner, consistent problem-solver, and team-oriented individual who enjoys taking on challenges and improving step by step. Currently, I am seeking opportunities to grow as a developer, contribute to impactful projects, and gain industry exposure.
+            </p>
+
+            <div class="edu-section">
+                <h2>Education</h2>
+                
+                <div class="edu-card">
+                    <h4>Indira Gandhi Delhi Technical University for Women</h4>
+                    <p>Bachelor of Technology in Electronics and Communications Engineering</p>
+                    <div class="meta">2023 – 2027 | CGPA - 8.47</div>
+                </div>
+
+                <div class="edu-card">
+                    <h4>Gargi College | University of Delhi</h4>
+                    <p>Bachelor of Science (B.Sc) – Physical Sciences (Chemistry)</p>
+                    <div class="meta">2022 - 2023 </div>
+                </div>
+
+                <div class="edu-card">
+                    <h4>Kendriya Vidyalaya, Sector 8, Rohini</h4>
+                    <p>Senior Secondary Education</p>
+                    <div class="meta">2021 – 2022 | 91%</div>
+                </div>
+
+                <div class="edu-card">
+                    <h4>Guru Tegh Bahadur Public School, Model Town, Delhi</h4>
+                    <p>Secondary Education</p>
+                    <div class="meta">2019 – 2020</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth entrance animations on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('p-side').classList.add('reveal');
+                document.getElementById('c-side').classList.add('reveal');
+            }, 100);
+        });
+    </script>
+</body>
+</html>

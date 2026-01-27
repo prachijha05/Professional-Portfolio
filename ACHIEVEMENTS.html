@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | Prachi Jha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent: #ff78e3;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url("images/hobbies.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            padding-bottom: 100px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        /* Achievement Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            background: rgba(255, 120, 227, 0.05);
+            transform: translateY(-10px);
+        }
+
+        /* Rank/Year Badge */
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 120, 227, 0.2);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid var(--accent);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .highlight-text {
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Achievements</h1>
+    </div>
+
+    <div class="grid-container">
+        
+        <div class="card">
+            <span class="badge">Rank: 1339 | 2025</span>
+            <i class="fas fa-code"></i>
+            <h2>TCS CodeVita Season 13</h2>
+            <p>Qualified <span class="highlight-text">Round 1</span> in a global 24-hour coding challenge, demonstrating advanced algorithmic problem-solving skills.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">Top 10% | 2025</span>
+            <i class="fas fa-trophy"></i>
+            <h2>Flipkart GRiD 7.0</h2>
+            <p>Reached <span class="highlight-text">Semi-Finalist</span> stage, ranking in the top 10% nationwide in a highly competitive DSA assessment.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">Semi-Finalist | 2025</span>
+            <i class="fas fa-lightbulb"></i>
+            <h2>Delhi Industrial Ideathon</h2>
+            <p>Advanced to the semi-finals of this national innovation challenge by delivering scalable, high-impact <span class="highlight-text">industrial solutions</span>.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">Mentee | 2025</span>
+            <i class="fas fa-star"></i>
+            <h2>Goldman Sachs Catalysts</h2>
+            <p>Distinguished among <span class="highlight-text">150+ students</span> for an exclusive leadership program, completing 1:1 career guidance sessions.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">Stage 2 | 2024</span>
+            <i class="fas fa-brain"></i>
+            <h2>ATF & AlgoZenith</h2>
+            <p>Advanced to <span class="highlight-text">Stage 2</span> by showcasing expertise in complex data structures and analytical solving.</p>
+        </div>
+
+        <div class="card">
+            <span class="badge">SSF & Katalyst | 2023</span>
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Scholarships & Fellowships</h2>
+            <p>Awarded competitive fellowships in <span class="highlight-text">STEM</span> for consistent academic performance and high future potential.</p>
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 150);
+            });
+        });
+    </script>
+    <style>
+    /* Add this to your existing styles */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .skill-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s;
+    }
+    .skill-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 120, 227, 0.15) 0%, transparent 50%);
+        opacity: 0; transition: opacity 0.3s;
+    }
+    .skill-card:hover::before { opacity: 1; }
+    .skill-card:hover { border-color: #ff78e3; transform: translateY(-5px); }
+</style>
+
+<script>
+    // Interaction effect for cards
+    document.querySelectorAll('.skill-card').forEach(card => {
+        card.onmousemove = e => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+        };
+    });
+</script>
+</body>
+</html>
