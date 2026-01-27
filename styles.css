@@ -92,3 +92,30 @@ video {
 .menu a:hover {
     opacity: 0.7;
 }
+/* Mobile Optimization for Index Page */
+@media (max-width: 600px) {
+    .video-container {
+        height: 50vh; /* Shorter video on mobile to show more content */
+    }
+
+    .main-text h1 {
+        font-size: 40px; /* Smaller title for mobile screens */
+    }
+
+    .menu a {
+        font-size: 30px; /* Readable menu links for touch */
+    }
+
+    .image-row {
+        flex-direction: column; /* Stack images vertically instead of horizontal */
+    }
+
+    .img-box {
+        width: 100vw; /* Each box takes full width of the phone */
+        height: 200px; /* Fixed height for consistent stacking */
+    }
+
+    .img-text {
+        font-size: 24px; /* Slightly smaller overlay text */
+    }
+}
