@@ -15,82 +15,117 @@
             --bg-dark: #080808;
         }
 
+        /* Global Scale for the 75% Zoom Look */
+        html { font-size: 88%; }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            /* Background with a deep overlay for high-contrast text */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url("images/current.jpg") no-repeat center center fixed;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url("images/current.jpg") no-repeat center center fixed;
             background-size: cover;
             color: white;
             font-family: 'Space Grotesk', sans-serif;
-            padding-bottom: 100px;
-            overflow-x: hidden;
+            overflow: hidden; 
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header Styling */
-        .header { text-align: center; padding: 80px 20px 40px; }
-        .header h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
+        /* MAIN TWO-COLUMN LAYOUT */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            height: 100vh;
+        }
+
+        /* LEFT SIDE: VISUAL SHOWCASE */
+        .visual-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .visual-side h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+            line-height: 1;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: -2px;
         }
 
-        /* Bento Grid Layout */
-        .project-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            padding: 20px;
-        }
-
-        /* Main Featured Project Card */
-        .featured {
-            grid-column: span 2;
-            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,120,227,0.05));
-        }
-
-        .project-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
-            border-radius: 35px;
-            padding: 40px;
+        .img-frame {
             position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            transform: translateY(40px);
+            width: 80%;
+            max-width: 350px;
         }
 
-        .project-card.reveal { opacity: 1; transform: translateY(0); }
+        /* VIDEO STYLING: Matching your original image frame */
+        .img-frame video {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(255, 120, 227, 0.2);
+            border: 1px solid var(--border);
+            object-fit: cover;
+            display: block;
+        }
+
+        /* RIGHT SIDE: SCROLLABLE PROJECTS */
+        .project-scroll-container {
+            overflow-y: auto;
+            padding: 60px 50px;
+            scrollbar-width: none;
+        }
+
+        .project-scroll-container::-webkit-scrollbar { display: none; }
+
+        /* CARD STYLING */
+        .project-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,120,227,0.02));
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0;
+            transform: translateX(40px);
+            text-align: left;
+        }
+
+        .project-card.reveal { opacity: 1; transform: translateX(0); }
 
         .project-card:hover {
             border-color: var(--accent);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 25px rgba(255, 120, 227, 0.15);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        /* Tech Tags */
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
         .tag {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
             color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
         }
 
-        .project-card h2 { font-size: 2.2rem; margin-bottom: 15px; color: #fff; }
-        .project-card h3 { font-size: 1rem; color: #aaa; margin-bottom: 20px; font-weight: 400; }
+        .project-card h2 { font-size: 1.8rem; margin-bottom: 5px; color: #fff; }
+        .project-card h3 { 
+            font-size: 0.9rem; 
+            color: var(--accent); 
+            margin-bottom: 20px; 
+            font-weight: 400; 
+            text-transform: uppercase;
+        }
+
         .project-card ul { list-style: none; }
         .project-card li {
             font-size: 1rem;
@@ -99,129 +134,123 @@
             line-height: 1.6;
             display: flex;
             gap: 12px;
+            text-align: left;
         }
 
         .project-card li i { color: var(--accent); margin-top: 5px; font-size: 0.8rem; }
 
-        /* Highlight Badge for Accuracy */
         .accuracy-badge {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: rgba(0, 255, 157, 0.1);
-            border: 1px solid #00ff9d;
-            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 12px;
             color: #00ff9d;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        .project-footer { margin-top: 30px; display: flex; gap: 20px; }
+        .project-footer { margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border); display: flex; gap: 20px; }
         .btn-link {
             text-decoration: none;
             color: #fff;
-            font-weight: 600;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            opacity: 0.7;
             transition: 0.3s;
         }
-        .btn-link:hover { color: var(--accent); }
+        .btn-link:hover { color: var(--accent); opacity: 1; }
 
-        /* Responsive adjustments */
-        @media (max-width: 900px) {
-            .project-grid { grid-template-columns: 1fr; }
-            .featured { grid-column: span 1; }
+        @media (max-width: 1000px) {
+            body { overflow: auto; }
+            .main-layout { grid-template-columns: 1fr; height: auto; }
+            .visual-side { padding-top: 80px; }
+            .project-scroll-container { overflow: visible; padding: 20px; }
         }
-        @media (max-width: 600px) {
-        .project-grid, .contact-wrapper, .main-container {
-            padding: 15px;
-        }
-        
-        .card, .project-card, .contact-item {
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        body {
-            background-attachment: scroll !important;
-        }
-    }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <h1>Projects</h1>
-    </header>
-
-    <main class="project-grid">
-        
-        <div class="project-card featured" id="resnet">
-            <div class="tech-stack">
-                <span class="tag">Python</span>
-                <span class="tag">PyTorch</span>
-                <span class="tag">ResNet-18</span>
-                <span class="tag">CNN</span>
-                <span class="tag">Transfer Learning</span>
-                <span class="tag">Computer Vision</span>
+    <div class="main-layout">
+        <section class="visual-side">
+            <h1>Projects</h1>
+            <div class="img-frame">
+                <video autoplay muted loop playsinline>
+                    <source src="images/project.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
-            <h2>Plant Disease Detection System</h2>
-            <h3>Academic Project | Deep Learning</h3>
-            <ul>
-                <li><i class="fas fa-brain"></i> Developed a plant disease classification model using <strong>ResNet-18</strong> with transfer learning on a 6-class image dataset.</li>
-                <li><i class="fas fa-layer-group"></i> Implemented a <strong>two-stage training strategy</strong>: feature extraction with a frozen backbone followed by fine-tuning of final layers.</li>
-                <li><i class="fas fa-expand-arrows-alt"></i> Applied data augmentation (rotation, flipping, color jitter) to significantly improve model generalization.</li>
-                <li><i class="fas fa-chart-line"></i> Built an inference pipeline to generate Top-4 disease predictions with confidence scores for leaf images.</li>
-                <li><i class="fas fa-save"></i> Saved deployment-ready model checkpoints including class-to-index mappings for reliable inference.</li>
-            </ul>
+        </section>
+
+        <section class="project-scroll-container">
             
-            <div class="accuracy-badge"><i class="fas fa-bullseye"></i> ~99–100% Validation Accuracy</div>
-        </div>
+            <div class="project-card" id="plantai-app">
+                <div class="tech-stack">
+                    <span class="tag">React Native (Expo)</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">SQLite</span>
+                </div>
+                <h2>PlantAI – Identification & Diagnosis App</h2>
+                <h3>Full-Stack Mobile Development | AI Integration</h3>
+                <ul>
+                    <li><i class="fas fa-mobile-alt"></i> Developed PlantAI, a full-stack mobile app using React Native and Expo for real-time plant identification and disease diagnosis.</li>
+                    <li><i class="fas fa-server"></i> Engineered a FastAPI backend to deploy fine-tuned ResNet-18 CNN models, optimizing the inference pipeline.</li>
+                    <li><i class="fas fa-compress-arrows-alt"></i> Reduced network payload by <strong>90%</strong> via server-side image compression, resolving latency issues.</li>
+                    <li><i class="fas fa-database"></i> Integrated <strong>SQLite</strong> for user history and a feedback system for active model refinement.</li>
+                    <li><i class="fas fa-pencil-ruler"></i> Architected a user-centric UI with real-time confidence meters and botanical REST APIs.</li>
+                </ul>
+                <div class="accuracy-badge"><i class="fas fa-bolt"></i> Low-Latency Mobile Inference</div>
+            </div>
 
-        <div class="project-card" id="crypto">
-            <div class="tech-stack">
-                <span class="tag">Python</span>
-                <span class="tag">Cryptography</span>
-                <span class="tag">Watchdog</span>
-                <span class="tag">Cybersecurity</span>
+            <div class="project-card" id="resnet">
+                <div class="tech-stack">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">ResNet-18</span>
+                    <span class="tag">Computer Vision</span>
+                </div>
+                <h2>Leaf Disease Detection System</h2>
+                <h3>Deep Learning</h3>
+                <ul>
+                    <li><i class="fas fa-brain"></i> Developed a classification model using ResNet-18 with transfer learning on a 6-class image dataset.</li>
+                    <li><i class="fas fa-layer-group"></i> Implemented a two-stage training strategy: feature extraction with a frozen backbone followed by fine-tuning.</li>
+                    <li><i class="fas fa-expand-arrows-alt"></i> Applied data augmentation (rotation, flipping, color jitter) to improve model generalization.</li>
+                    <li><i class="fas fa-chart-line"></i> Built an inference pipeline to generate Top-4 disease predictions with confidence scores.</li>
+                    <li><i class="fas fa-save"></i> Saved deployment-ready model checkpoints for reliable inference.</li>
+                </ul>
+                <div class="accuracy-badge"><i class="fas fa-bullseye"></i> ~99–100% Validation Accuracy</div>
             </div>
-            <h2>Ransomware Detection & Simulation</h2>
-            <ul>
-                <li><i class="fas fa-shield-virus"></i> Built a secure ransomware simulator to encrypt/decrypt dummy files in a sandbox environment.</li>
-                <li><i class="fas fa-eye"></i> Deployed a real-time detection system using <strong>Watchdog</strong> to monitor suspicious file changes and alerts.</li>
-                <li><i class="fas fa-key"></i> Automated encryption with a secure key management system and validated functionality through multiple cases.</li>
-                <li><i class="fas fa-user-secret"></i> Simulated attacks to implement advanced prevention and detection mechanisms.</li>
-            </ul>
-            <div class="project-footer">
-                <span class="btn-link"><i class="fab fa-github"></i> View Repo</span>
-            </div>
-        </div>
 
-        <div class="project-card" id="portfolio">
-            <div class="tech-stack">
-                <span class="tag">HTML5</span>
-                <span class="tag">CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Tailwind</span>
+            <div class="project-card" id="crypto">
+                <div class="tech-stack">
+                    <span class="tag">Python</span>
+                    <span class="tag">Cryptography</span>
+                    <span class="tag">Watchdog</span>
+                    <span class="tag">Cybersecurity</span>
+                </div>
+                <h2>Ransomware Detection & Simulation</h2>
+                <h3>Security Tooling | Python</h3>
+                <ul>
+                    <li><i class="fas fa-shield-virus"></i> Built a secure ransomware simulator to encrypt/decrypt dummy files in a sandbox.</li>
+                    <li><i class="fas fa-eye"></i> Deployed a real-time detection system using <strong>Watchdog</strong> to monitor suspicious changes.</li>
+                    <li><i class="fas fa-key"></i> Automated encryption with a secure key management system.</li>
+                    <li><i class="fas fa-user-secret"></i> Simulated attacks to implement advanced prevention mechanisms.</li>
+                </ul>
+                <div class="project-footer">
+                    <span class="btn-link"><i class="fab fa-github"></i> View Repository</span>
+                </div>
             </div>
-            <h2>Personal Portfolio Website</h2>
-            <ul>
-                <li><i class="fas fa-laptop-code"></i> Designed and developed a responsive personal portfolio website to showcase technical skills and achievements.</li>
-                <li><i class="fas fa-mobile-alt"></i> Optimized for 100% responsiveness across devices, improving accessibility and user experience.</li>
-                <li><i class="fas fa-code-branch"></i> Deployed on GitHub with professional version control and presentation.</li>
-                <li><i class="fas fa-magic"></i> Implemented custom Glassmorphism UI and entrance animations for a premium feel.</li>
-            </ul>
-            <div class="project-footer">
-                <span class="btn-link"><i class="fas fa-external-link-alt"></i> Live Demo</span>
-                <span class="btn-link"><i class="fab fa-github"></i> GitHub</span>
-            </div>
-        </div>
 
-    </main>
+        </section>
+    </div>
 
     <script>
-        // Staggered Entrance Animation Logic
         window.addEventListener('load', () => {
             const cards = document.querySelectorAll('.project-card');
             cards.forEach((card, index) => {
@@ -231,6 +260,5 @@
             });
         });
     </script>
-
 </body>
 </html>

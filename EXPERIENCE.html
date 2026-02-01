@@ -15,6 +15,11 @@
             --bg: #050505;
         }
 
+        /* 1. Global Scale Reduction (The 75% Look) */
+        html {
+            font-size: 88%; 
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -22,9 +27,9 @@
             color: white;
             font-family: 'Space Grotesk', sans-serif;
             overflow: hidden; /* Desktop fixed layout */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Background City View with Overlay */
         .bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -35,63 +40,66 @@
 
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 0.8fr 1.2fr; /* Tightened visual side */
             height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        /* Left Side: Visual Showcase */
+        /* Left Side: Visual Showcase scaled down */
         .visual-side {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 30px;
             position: relative;
         }
 
         .visual-side h1 {
-            font-size: 5rem;
+            font-size: clamp(2.5rem, 6vw, 3.8rem); /* Reduced from 5rem */
             font-weight: 700;
             line-height: 1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: linear-gradient(to bottom, #fff, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            letter-spacing: -2px;
         }
 
         .img-frame {
             position: relative;
-            width: 80%;
-            max-width: 400px;
+            width: 70%; /* Reduced from 80% */
+            max-width: 320px; /* Reduced from 400px */
         }
 
         .img-frame img {
             width: 100%;
-            border-radius: 30px;
-            box-shadow: 0 0 50px rgba(255, 120, 227, 0.2);
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(255, 120, 227, 0.15);
             border: 1px solid var(--border);
         }
 
-        /* Right Side: Scrollable Timeline */
+        /* Right Side: Scrollable Timeline refined */
         .timeline-side {
             overflow-y: auto;
-            padding: 100px 60px;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
+            padding: 80px 50px; /* Reduced from 100px 60px */
+            scrollbar-width: none; 
         }
 
-        .timeline-side::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
+        .timeline-side::-webkit-scrollbar { display: none; } 
 
         .exp-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 40px;
-            margin-bottom: 40px;
+            padding: 28px; /* Reduced from 40px */
+            border-radius: 25px; /* Reduced from 40px */
+            margin-bottom: 30px; /* Reduced from 40px */
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
-            transform: translateX(50px);
+            transform: translateX(30px);
         }
 
         .exp-card.reveal {
@@ -101,61 +109,62 @@
 
         .exp-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(255, 120, 227, 0.1);
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(255, 120, 227, 0.08);
         }
 
         .tag {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 4px 12px;
             border-radius: 50px;
             background: var(--accent);
             color: black;
             font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
+            font-size: 0.75rem; /* Reduced from 0.8rem */
+            margin-bottom: 12px;
         }
 
         .exp-card h2 {
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 1.6rem; /* Reduced from 2rem */
+            margin-bottom: 4px;
         }
 
         .exp-card h3 {
+            font-size: 0.95rem;
             color: #aaa;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 400;
         }
 
-        .exp-card ul {
-            list-style: none;
-        }
-
         .exp-card li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
-            gap: 15px;
-            font-size: 1rem;
+            gap: 12px;
+            font-size: 0.95rem; /* Reduced from 1rem */
             color: #ddd;
+            line-height: 1.5;
         }
 
         .exp-card li i {
             color: var(--accent);
-            margin-top: 5px;
+            margin-top: 4px;
+            font-size: 0.8rem;
         }
 
-        /* Floating Nav Buttons */
+        /* Floating Nav Buttons scaled down */
         .nav-footer {
             position: fixed;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 15px;
             z-index: 100;
         }
 
         .btn-glow {
-            padding: 15px 35px;
+            padding: 12px 28px;
+            font-size: 0.9rem;
             border-radius: 50px;
             text-decoration: none;
             color: white;
@@ -168,30 +177,17 @@
         .btn-glow:hover {
             background: var(--accent);
             color: black;
-            box-shadow: 0 0 20px var(--accent);
+            box-shadow: 0 0 15px var(--accent);
         }
 
         @media (max-width: 900px) {
             body { overflow: auto; }
             .main-layout { grid-template-columns: 1fr; height: auto; }
-            .visual-side { padding-top: 80px; }
-            .visual-side h1 { font-size: 3rem; }
-            .timeline-side { padding: 40px 20px; }
+            .visual-side { padding-top: 60px; }
+            .visual-side h1 { font-size: 2.8rem; }
+            .timeline-side { padding: 30px 20px; }
+            .nav-footer { position: relative; bottom: 20px; margin-top: 40px; }
         }
-        @media (max-width: 600px) {
-        .project-grid, .contact-wrapper, .main-container {
-            padding: 15px;
-        }
-        
-        .card, .project-card, .contact-item {
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        body {
-            background-attachment: scroll !important;
-        }
-    }
     </style>
 </head>
 <body>
@@ -202,7 +198,7 @@
         <section class="visual-side">
             <h1>Experience</h1>
             <div class="img-frame">
-                <img src="images/window.jpeg" alt="Vision">
+                <img src="images/window.jpeg" alt="Professional Experience">
             </div>
         </section>
 
@@ -237,8 +233,8 @@
     </div>
 
     <div class="nav-footer">
-        <a href="work.html" class="btn-glow">My Projects</a>
-        <a href="skills.html" class="btn-glow">Technical Skills</a>
+        <a href="Projects.html" class="btn-glow">View Projects</a>
+        <a href="skills.html" class="btn-glow">My Skills</a>
     </div>
 
     <script>
@@ -247,7 +243,7 @@
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.classList.add('reveal');
-                }, 300 * (index + 1));
+                }, 200 * (index + 1));
             });
         });
     </script>

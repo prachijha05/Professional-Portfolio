@@ -15,131 +15,120 @@
             --border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* 1. Global Scale Reduction (The 75% Look) */
+        html {
+            font-size: 88%; 
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("images/skills.jpg") no-repeat center center fixed;
             background-size: cover;
             color: white;
             font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Animated Background Header */
+        /* Header Styling - Reduced Sizes */
         .hero-title {
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 60px 20px 40px; /* Reduced from 100px */
         }
 
         .hero-title h1 {
-            font-size: clamp(3rem, 10vw, 5rem);
+            font-size: clamp(2.5rem, 7vw, 3.8rem); /* Reduced from 5rem */
             font-weight: 700;
             text-transform: uppercase;
             background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -3px;
+            letter-spacing: -2px;
         }
 
-        /* Main Content Layout */
+        /* Main Content Layout - Tightened Gaps */
         .main-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 80px;
-            max-width: 1300px;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 50px; /* Reduced from 80px */
+            max-width: 1100px; /* Reduced from 1300px */
             margin: 0 auto;
-            padding: 0 40px 100px;
+            padding: 0 40px 60px;
             align-items: center;
         }
 
-        /* Creative Image Showcase */
-        .image-side {
-            position: relative;
-        }
+        /* Image Showcase scaled down */
+        .image-side { position: relative; }
 
         .image-side img {
             width: 100%;
-            border-radius: 40px;
+            border-radius: 30px; /* Reduced from 40px */
             border: 1px solid var(--border);
-            filter: saturate(1.2);
-            box-shadow: 0 0 40px rgba(255, 120, 227, 0.15);
-            transition: transform 0.5s ease;
+            box-shadow: 0 0 30px rgba(255, 120, 227, 0.1);
         }
 
-        .image-side:hover img {
-            transform: scale(1.02) rotate(-1deg);
-        }
-
-        /* Floating Stats/Badges */
         .badge {
             position: absolute;
             background: var(--accent);
             color: black;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
-            bottom: -20px;
-            right: -20px;
-            box-shadow: 0 10px 20px rgba(255, 120, 227, 0.4);
+            font-size: 0.8rem; /* Reduced from 0.9rem */
+            bottom: -15px;
+            right: -15px;
         }
 
-        /* Skill Grid */
+        /* Skill Grid - Compact Groups */
         .skills-container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px; /* Reduced from 30px */
         }
 
         .skill-group {
             background: var(--glass);
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            padding: 35px;
-            border-radius: 30px;
+            padding: 22px; /* Reduced from 35px */
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
 
         .skill-group:hover {
             border-color: var(--accent);
             background: rgba(255, 120, 227, 0.05);
+            transform: translateX(5px);
         }
 
         .skill-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
         .skill-header i {
-            font-size: 1.8rem;
+            font-size: 1.4rem; /* Reduced from 1.8rem */
             color: var(--accent);
         }
 
         .skill-header h2 {
-            font-size: 1.5rem;
-            letter-spacing: 1px;
+            font-size: 1.2rem; /* Reduced from 1.5rem */
+            letter-spacing: 0.5px;
         }
 
-        /* Skill Chips */
-        .chip-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+        /* Skill Chips scaled down */
+        .chip-container { display: flex; flex-wrap: wrap; gap: 8px; }
 
         .chip {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
-            padding: 8px 18px;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem; /* Reduced from 0.9rem */
             color: #ddd;
             transition: all 0.3s;
         }
@@ -147,60 +136,42 @@
         .chip:hover {
             background: white;
             color: black;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
-        /* CTA Buttons */
+        /* Action Buttons refined */
         .actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding-bottom: 100px;
+            gap: 15px;
+            padding-bottom: 80px;
         }
 
         .btn-modern {
-            padding: 18px 45px;
-            border-radius: 15px;
+            padding: 14px 35px; /* Reduced from 18px 45px */
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
+            font-size: 0.85rem;
             color: white;
             border: 1px solid var(--border);
             background: var(--glass);
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .btn-modern.primary {
-            background: white;
-            color: black;
-        }
+        .btn-modern.primary { background: white; color: black; }
 
         .btn-modern:hover {
             background: var(--accent);
             color: black;
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(255, 120, 227, 0.3);
+            box-shadow: 0 0 20px rgba(255, 120, 227, 0.25);
         }
 
         @media (max-width: 1000px) {
-            .main-wrapper { grid-template-columns: 1fr; }
-            .hero-title h1 { font-size: 3rem; }
+            .main-wrapper { grid-template-columns: 1fr; gap: 30px; }
+            .hero-title h1 { font-size: 2.8rem; }
         }
-        @media (max-width: 600px) {
-        .project-grid, .contact-wrapper, .main-container {
-            padding: 15px;
-        }
-        
-        .card, .project-card, .contact-item {
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        body {
-            background-attachment: scroll !important;
-        }
-    }
     </style>
 </head>
 <body>
@@ -222,9 +193,8 @@
                     <h2>Programming</h2>
                 </div>
                 <div class="chip-container">
-                    <div class="chip">C++ </div>
+                    <div class="chip">C++</div>
                     <div class="chip">Python</div>
-                    <div class="chip">C</div>
                     <div class="chip">JavaScript</div>
                     <div class="chip">HTML5 / CSS3</div>
                 </div>
@@ -238,7 +208,7 @@
                 <div class="chip-container">
                     <div class="chip">PyTorch</div>
                     <div class="chip">YOLO (Object Detection)</div>
-                    <div class="chip">ResNet</div>
+                    <div class="chip">ResNet-18</div>
                     <div class="chip">Control Systems</div>
                     <div class="chip">NLP</div>
                 </div>
@@ -253,7 +223,6 @@
                     <div class="chip">React Native</div>
                     <div class="chip">FastAPI</div>
                     <div class="chip">PostgreSQL</div>
-                    <div class="chip">MySQL</div>
                     <div class="chip">Expo</div>
                 </div>
             </div>
@@ -274,7 +243,7 @@
     </main>
 
     <div class="actions">
-        <a href="work.html" class="btn-modern primary">View Projects</a>
+        <a href="Projects.html" class="btn-modern primary">View Projects</a>
         <a href="contact.html" class="btn-modern">Contact Me</a>
     </div>
 
